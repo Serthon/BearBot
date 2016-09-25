@@ -13,6 +13,7 @@
   "license": "GPL-3.0",
   "repository": "https://github.com/Stawln/BearBot/",
   "dependencies": {
-    "eris": "abalabahaha/Eris"
+    "eris": "abalabahaha/Eris",
+    "youtube-node": "^1.3.0",
   }
 }
