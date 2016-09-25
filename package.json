@@ -1,0 +1,16 @@
+{
+  "name": "Bear",
+  "version": "0.0.1",
+  "description": "A discord bot.",
+  "author": {
+    "name": "Sten-Villiam Velleste",
+    "email": "sten.villiam@outlook.com"
+  },
+  "engines": {
+    "node": "^5.x.x",
+    "npm": ">=3.x.x"
+  },
+  "dependencies": {
+    "eris": "abalabahaha/Eris"
+  }
+}
