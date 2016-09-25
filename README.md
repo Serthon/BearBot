@@ -1,0 +1,2 @@
+# BearBot
+A Discord bot.
