@@ -1,7 +1,7 @@
 {
     "info": {
-      "token": "MTY4NzQyMDQ0NTI3ODg2MzQ2.Csl4dQ.cBBvc3zBHxd3GB5he9zc_1-Oxbo",
-      "prefix": "$",
-      "ytapi": "AIzaSyCcmusioyBo6oj9ndLxE3ymTdlLcRRQHZE"
+      "token": "<your bot token, found at https://discordapp.com/developers/applications/me/>",
+      "prefix": "<your desired prefix>",
+      "ytapi": "<youtube-api-key>"
     }
 }
