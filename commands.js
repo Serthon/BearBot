@@ -16,19 +16,27 @@ var cmd = {
         }
     },
   ban: {
-      fn: function(bot, msg, suffix) {
-        var base = suffix
-        var stub = base.split(' ')
-        if (msg.member.permission.json['banMembers']) {
-          if (msg.mentions.length === 1 && !isNaN(stub[1])) {
-            bot.banGuildMember(msg.channel.guild.id, msg.mentions[0].id, stub[1])
-            bot.createMessage(msg.channel.id, 'The user should now be banned, if I had the permissions for it!')
+      fn: function (bot, msg, suffix) {
+        if (msg.channel.guild.members.get(bot.user.id).permission.json['banMembers']) {
+          if (msg.member.permission.json['banMembers']) {
+            if (msg.mentions.length === 1) {
+              if (suffix.startsWith('confirm')) {
+                bot.banGuildMember(msg.channel.guild.id, msg.mentions[0].id, 1).then(() => {
+                  bot.createMessage(msg.channel.id, '**' + msg.mentions[0].username + '** has been banned! :eyes: :hammer:')
+                }).catch(() => {
+                  bot.createMessage(msg.channel.id, ':x: Couldn\'t ban **' + msg.mentions[0].username + '**, most likely person\'s role is higher than bot\'s!')
+                })
+              } else {
+                bot.createMessage(msg.channel.id, ':warning: **Confirmation**\nConfirm your action by typing in `' + prefix + 'ban confirm @\u200Bmention`\n**THIS ACTION IS IRREVERSIBLE!**')
+              }
+            } else {
+              bot.createMessage(msg.channel.id, "You didin't mention anyone!")
+            }
           } else {
-            if (isNaN(stub[1])) return bot.createMessage(msg.channel.id, "Your second param is not a number!")
-            if (stub[0] !== msg.mentions[0]) bot.createMessage(msg.channel.id, "Your first param isn't a mention!")
+            bot.createMessage(msg.channel.id, 'Your role does not have enough permissions!')
           }
         } else {
-          bot.createMessage(msg.channel.id, 'Your role does not have enough permissions!')
+          bot.createMessage(msg.channel.id, 'The bot\'s role has no sufficient permissions!')
         }
       }
   },
