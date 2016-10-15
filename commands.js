@@ -117,7 +117,16 @@ var cmd = {
       }
     }
   },
-
+   '8ball': {
+    fn: function(bot, msg, suffix) {
+      var eBall = ['It is certain', 'It is decidedly so', 'Without a doubt', 'Yes, definitely', 'You may rely on it',
+                   'As I see it, yes', 'Most likely', 'Outlook good', 'Yes', 'Signs point to yes',
+                   'Reply hazy try again', 'Ask again later', 'Better not tell you now', 'Cannot predict now', 'Concentrate and ask again',
+                   "Don't count on it", 'My reply is no', 'My sources say no', 'Outlook not so good', 'Very doubtful']
+      if (suffix) return bot.createMessage(msg.channel.id, '\u200B:8ball: ' + eBall[Math.floor(Math.random() * eBall.length)])
+      return bot.createMessage(msg.channel.id, '\u200B**Please submit any question, for the 8ball to work.**')
+    }
+  }
 }
 function checkGame (type, game) {
   if (type === 0) return 'Playing: ' + game
